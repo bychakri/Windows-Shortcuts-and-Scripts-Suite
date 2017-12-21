@@ -42,8 +42,8 @@ GuiCreateList()
 
 LoadprojectIniList() {
   global
-  IniRead, theData, config.ini, %actGUISection%, %actGUILabel%, % ",\0. Flashing LED"
-  IniRead, parFolder, config.ini, CurrentProject, Breadboard, % "G:\2. Project Breadboad\17. Light Sensor"
+  IniRead, theData, F:\Interception\AHKs\config.ini, %actGUISection%, %actGUILabel%, % ",\0. Flashing LED"
+  IniRead, parFolder, F:\Interception\AHKs\config.ini, CurrentProject, Breadboard, % "G:\2. Project Breadboad\17. Light Sensor"
   ;MsgBox % theData
   tmpList := StrSplit(theData,",")
   tmpList.Delete(1)
@@ -59,7 +59,7 @@ LoadprojectIniList() {
 LoadIniList() {
   global
   ;msgbox % "InList" . actGUISection . actGUILabel
-  IniRead, theData, config.ini, %actGUISection%, %actGUILabel%, % ",dummyRow"
+  IniRead, theData, F:\Interception\AHKs\config.ini, %actGUISection%, %actGUILabel%, % ",dummyRow"
   tmpList := StrSplit(theData,",")
   tmpList.Delete(1)
   %actGUISection%%actGUILabel%List := tmpList
@@ -69,7 +69,7 @@ changeCurProject() {
   global
   FileSelectFolder, Folder,G:\2. Project Breadboad
   if (Folder <> "") {
-    IniWrite,% Folder , config.ini, CurrentProject, %actGUILabel%
+    IniWrite,% Folder , F:\Interception\AHKs\config.ini, CurrentProject, %actGUILabel%
     %actGUISection%%actGUILabel%ParFol := Folder
     CloseGui()
     LoadprojectIniList()
@@ -108,7 +108,7 @@ UpdateIni(tmpList) {
  folstra := ""
  for index, element in tmpList
   folstra := folstra . "," . element
- IniWrite, % folstra , config.ini, %actGUISection% , %actGUILabel%
+ IniWrite, % folstra , F:\Interception\AHKs\config.ini, %actGUISection% , %actGUILabel%
  LoadIniList()
  CloseGui()
  GuiCreateList()
@@ -119,7 +119,7 @@ UpdateProjectIni(tmpList) {
  for index, element in tmpList {
   folstra := folstra . "," . element
   }
- IniWrite, % folstra , config.ini, %actGUISection% , %actGUILabel%
+ IniWrite, % folstra , F:\Interception\AHKs\config.ini, %actGUISection% , %actGUILabel%
  LoadProjectIniList()
  CloseGui()
  GuiCreateList()
