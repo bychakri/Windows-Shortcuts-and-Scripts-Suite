@@ -4,4 +4,6 @@
 #include common.ahk
 #include browser.ahk
 #include atom.ahk
+#include eagle.ahk
+#include audition.ahk
 #include default.ahk
