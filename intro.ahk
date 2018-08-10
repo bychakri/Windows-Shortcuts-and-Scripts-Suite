@@ -1,6 +1,9 @@
-lviW := 250
-allModals := [["Folders","Primary"],["Files","Primary"],["Apps","Primary"]]
-projectModals := [["Project","Breadboard"]]
+lviW := 450
+baseDir := A_WorkingDir
+listGuiConfigFile := baseDir . "\config\listGuiShortcutsData.ini"
+;MsgBox % listGuiConfigFile
+allModals := [["Folders","Primary"],["Files","Primary"],["Apps","Primary"],["Scripts","elonics"],["Apps","Secondary"]]
+projectModals := [["Project","Breadboard","G:\2. Project Breadboad"],["Project","Elonics","G:\4. Elonics Website\Breadboard"]]
 
 ytd := "https://www.youtube.com/dashboard?o=U"
 ytrt := "https://www.youtube.com/analytics?o=U#dt=nt,fe=17516,fr=lw-001,fs=17489;fc=0,fcr=0,r=realtime"

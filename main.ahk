@@ -1,9 +1,9 @@
 #include intro.ahk
-#include guilist.ahk
-#include functions.ahk
-#include common.ahk
-#include browser.ahk
-#include atom.ahk
-#include eagle.ahk
-#include audition.ahk
-#include default.ahk
+#include list Gui\ListGuiFunc.ahk
+#include functions\basic.ahk
+#include shortcuts\common.ahk
+#include shortcuts\browser.ahk
+#include shortcuts\atom.ahk
+#include shortcuts\eagle.ahk
+#include shortcuts\audition.ahk
+#include shortcuts\default.ahk
