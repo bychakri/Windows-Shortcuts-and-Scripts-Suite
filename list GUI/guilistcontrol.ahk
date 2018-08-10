@@ -99,7 +99,7 @@ Else If (A_GuiEvent = "K"){
   UpdateIni(tmpList)
   }
  else if (key = "NumpadAdd") {
-  FileSelectFile, File, 32 ,C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+  FileSelectFile, File, 32 , % A_ScriptDir + "\scripts"
   if (File <> "") {
    tmpList := %actGUISection%%actGUILabel%List
    tmpList.Insert(File)
