@@ -13,10 +13,10 @@ SetWorkingDir %A_ScriptDir%
 #SingleInstance force
 SendMode Input
 
-WinClose, ahk_exe intercept.exe
-Run, F:\Interception\intercept GUI\Modify External Keyboard.lnk
-WinWait, Modify External Keyboard
-Sleep, 100
-WinHide, Modify External Keyboard
+;WinClose, ahk_exe intercept.exe
+;Run, F:\Interception\intercept GUI\Modify External Keyboard.lnk
+;WinWait, Modify External Keyboard
+;Sleep, 100
+;WinHide, Modify External Keyboard
 
 SetNumlockState, AlwaysOn
