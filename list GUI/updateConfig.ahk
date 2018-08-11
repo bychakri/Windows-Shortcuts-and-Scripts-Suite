@@ -3,7 +3,10 @@ UpdateIni(tmpList) {
  folstra := ""
  for index, element in tmpList
   folstra := folstra . "," . element
- IniWrite, % folstra , %listGuiConfigFile%, %actGUISection% , %actGUILabel%
+ ; Sort after removing first comma
+ list := SubStr(folstra,2)
+ sort,list,\ D,
+ IniWrite, % "," . list , %listGuiConfigFile%, %actGUISection% , %actGUILabel%
  LoadIniList()
  CloseGui()
  GuiCreateList()
@@ -28,7 +31,10 @@ UpdateProjectIni(tmpList) {
  for index, element in tmpList {
   folstra := folstra . "," . element
   }
- IniWrite, % folstra , %listGuiConfigFile%, %actGUISection% , %actGUILabel%
+ ; Sort after removing first comma
+ list := SubStr(folstra,2)
+ sort,list,\ D,
+ IniWrite, % "," . list , %listGuiConfigFile%, %actGUISection% , %actGUILabel%
  LoadProjectIniList()
  CloseGui()
  GuiCreateList()
