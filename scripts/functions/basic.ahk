@@ -1,3 +1,8 @@
+openChrome(url,profile) {
+  ; Default / Person n
+  run "C:\Program Files (x86)\Google\Chrome\Application\Chrome.exe"  --profile-directory="%profile%" "%url%"
+}
+
 getCurProjFol(projName) {
     IniRead, ProjFol, % StrReplace(A_ScriptDir, "scripts") . "config\listGuiShortcutsData.ini", CurrentProject, % projName
     return ProjFol

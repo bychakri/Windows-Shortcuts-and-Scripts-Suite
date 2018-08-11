@@ -11,6 +11,10 @@ Numpad0 & Numpad8::showProjectGui(2)
 Numpad0 & Numpad9::
 Numpad0::Send {Numpad0}
 
+Numpad0 & e::openChrome("https://elonics.org/","Profile 1")
+Numpad0 & m::openChrome("https://mail.google.com/mail/u/0/","Default")
+Numpad0 & y::openChrome("https://www.youtube.com/dashboard?ar=1&o=U","Default")
+
 F23 & F12::OpenApp("ahk_exe chrome.exe",A_ProgramsCommon . "\Google Chrome.lnk")
 F23 & F11::run explorer.exe
 F23 & F1::

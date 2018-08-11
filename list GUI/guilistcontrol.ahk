@@ -1,12 +1,9 @@
 GProject:
 If (A_GuiEvent = "Normal"){
- tmpList := %actGUISection%%actGUILabel%List
- run, % tmpList[A_EventInfo+1]
- CloseGui()
+ goto ButtonOK
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- ;Msgbox % key
  if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%RelList
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
@@ -37,9 +34,7 @@ return
 
 GFiles:
 If (A_GuiEvent = "Normal"){
- tmpList := %actGUISection%%actGUILabel%List
- run, % tmpList[A_EventInfo+1]
- CloseGui()
+ goto ButtonOK
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
@@ -61,13 +56,10 @@ Return
 
 GApps:
 If (A_GuiEvent = "Normal"){
- tmpList := %actGUISection%%actGUILabel%List
- run, % tmpList[A_EventInfo+1]
- CloseGui()
+ goto ButtonOK
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- ;Msgbox % key
  if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
@@ -86,13 +78,10 @@ Return
 
 GScripts:
 If (A_GuiEvent = "Normal"){
- tmpList := %actGUISection%%actGUILabel%List
- run, % tmpList[A_EventInfo+1]
- CloseGui()
+ goto ButtonOK
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- ;Msgbox % key
  if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
@@ -111,13 +100,10 @@ Return
 
 GFolders:
 If (A_GuiEvent = "Normal"){
- tmpList := %actGUISection%%actGUILabel%List
- run, % tmpList[A_EventInfo+1]
- CloseGui()
+ goto ButtonOK
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- ;Msgbox % key
  if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
@@ -138,6 +124,6 @@ ButtonOK:
 GuiControlGet, FocusedControl, FocusV
 if LV_GetNext(0, "Focused") = 0
     return
-run, % %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+run, % """" . %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1] . """"
 CloseGui()
 return

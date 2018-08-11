@@ -12,3 +12,8 @@ OpenApp(class,path) {
 	    run, % path
 	return
 }
+
+openChrome(url,profile) {
+  ; Default / Person n
+  run "C:\Program Files (x86)\Google\Chrome\Application\Chrome.exe"  --profile-directory="%profile%" "%url%"
+}
