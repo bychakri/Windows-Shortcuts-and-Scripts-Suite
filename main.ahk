@@ -7,3 +7,4 @@
 #include shortcuts\eagle.ahk
 #include shortcuts\audition.ahk
 #include shortcuts\default.ahk
+#include text GUI\textboxguifunc.ahk

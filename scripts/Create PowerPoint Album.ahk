@@ -6,6 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #include %A_ScriptDir%\functions\basic.ahk
 setkeydelay,10,50
 
+;Click on New Photo Album button in quick access ribbon
 ControlClick, X195 Y22, ahk_class PPTFrameClass
 sleep, 500
 ControlClick, X57 Y84, Photo Album

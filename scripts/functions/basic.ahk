@@ -1,5 +1,5 @@
 openChrome(url,profile) {
-  ; Default / Person n
+  ; Default / Profile n
   run "C:\Program Files (x86)\Google\Chrome\Application\Chrome.exe"  --profile-directory="%profile%" "%url%"
 }
 

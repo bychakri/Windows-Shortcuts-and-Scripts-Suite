@@ -1,8 +1,8 @@
 lviW := 450
-baseDir := A_WorkingDir
+baseDir := A_ScriptDir
 listGuiConfigFile := baseDir . "\config\listGuiShortcutsData.ini"
 allModals := [["Folders","Primary"],["Files","Primary"],["Apps","Primary"],["Scripts","elonics"],["Apps","Secondary"]]
-projectModals := [["Project","Breadboard","G:\2. Project Breadboad"],["Project","Elonics","G:\4. Elonics Website\Breadboard"]]
+projectModals := [["Project","Breadboard","G:\2. Project Breadboad"],["Project","Elonics","G:\Elonics\Breadboard"]]
 
 
 #NoEnv
