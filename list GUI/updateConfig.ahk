@@ -12,6 +12,20 @@ UpdateIni(tmpList) {
  GuiCreateList()
 }
 
+UpdateScriptIni(tmpList) {
+ global
+ folstra := ""
+ for index, element in tmpList
+  folstra := folstra . "," . strreplace(element,A_ScriptDir)
+ ; Sort after removing first comma
+ list := SubStr(folstra,2)
+ sort,list,\ D,
+ IniWrite, % "," . list , %listGuiConfigFile%, %actGUISection% , %actGUILabel%
+ LoadIniList()
+ CloseGui()
+ GuiCreateList()
+}
+
 changeCurProject() {
   global
 ; MsgBox % %actGUISection%%actGUILabel%ProjFol

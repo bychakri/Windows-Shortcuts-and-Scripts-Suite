@@ -5,10 +5,6 @@
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #include %A_ScriptDir%\functions\basic.ahk
 
-GuiCreateTextListBox(["asd","aefsd"],["dfsg","czfds"])
-
-
-GuiClose:
-GuiEscape:
-Gui, Destroy
-return
+a := "G:\Elonics\Breadboard\1. Light Sensor Circuit - Copy"
+SplitPath, a,,dir
+msgbox % dir

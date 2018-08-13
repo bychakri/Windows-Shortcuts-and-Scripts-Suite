@@ -14,3 +14,4 @@ Sdat := GuiCreateTextBox("Enter the Search Phrase for DuckDuckGo")
 if Sdat
  openChrome("https://www.google.com/search?tbm=isch&q=" . Sdat . "","Profile 1")
 return
+Capslock & d::run "C:\Shortcuts\Microsoft-Edge.lnk" GuiCreateTextBox("Enter the Search Phrase for DuckDuckGo")

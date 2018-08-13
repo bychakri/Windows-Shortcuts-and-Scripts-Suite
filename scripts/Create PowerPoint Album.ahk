@@ -6,14 +6,24 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #include %A_ScriptDir%\functions\basic.ahk
 setkeydelay,10,50
 
+curproj := getCurProjFol("Elonics")
+SplitPath, curproj,,basedir
+SplitPath, basedir,,basedir
+
+if !winExist("ahk_class PPTFrameClass")
+  MsgBox Open a Presentation First
+
 ;Click on New Photo Album button in quick access ribbon
 ControlClick, X195 Y22, ahk_class PPTFrameClass
 sleep, 500
 ControlClick, X57 Y84, Photo Album
 WaitForWin("Insert New Pictures")
-send +{Tab}
+Clipboard := curproj . "\images\pngsteps"
+send !d
+send ^v{Enter}{Tab 4}
 send ^a
 send {Enter}
+sleep, 5000
 ; Select Slide type dropdowm
 ControlClick, X366 Y298, Photo Album
 sleep, 500
@@ -27,7 +37,7 @@ sleep, 50
 ControlClick, X128 Y339, Photo Album
 sleep, 50
 ; Copy theme location & paste
-Clipboard = "G:\4. Elonics Website\Reference\Power Point Themes\wooden.thmx"
+Clipboard := basedir . "\Reference\Power Point Themes\wooden.thmx"
 Send ^v
 sleep, 50
 ; Enter

@@ -7,11 +7,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 i = 1
 curproj := getCurProjFol("Elonics")
-If WinExist("circuitforscreenshots.fzz* - Fritzing - [Breadboard View]") {
-    WinActivate, circuitforscreenshots.fzz* - Fritzing - [Breadboard View]
+MsgBox % curproj
+If WinExist("fritzing.fzz* - Fritzing - [Breadboard View]") {
+    WinActivate, fritzing.fzz* - Fritzing - [Breadboard View]
     WaitForWin("ahk_exe Fritzing.exe")
 ;
-    while WinExist("circuitforscreenshots.fzz* - Fritzing - [Breadboard View]")
+    while WinExist("fritzing.fzz* - Fritzing - [Breadboard View]")
     {
         SoundBeep
         SetKeyDelay, 10, 50
@@ -32,9 +33,9 @@ If WinExist("circuitforscreenshots.fzz* - Fritzing - [Breadboard View]") {
         else {
           send {Enter}
         }
-        WaitForWin("circuitforscreenshots.fzz")
+        WaitForWin("fritzing.fzz")
     }
-    run, %A_ScriptDir%\batchfiles\svgtopng.bat %curproj%
+    RunWait, %A_ScriptDir%\batchfiles\svgtopng.bat %curproj%
     MsgBox The Entire Process is Done
 }
 else{

@@ -5,17 +5,17 @@
 ^!Numpad6::send ^y
 ^!Numpad8::send Move{Enter}
 ^!Numpad5::send Delete{Enter}
-F23 & a:: send Add{Enter}
-F23 & m:: send Move{Enter}
-F23 & r:: send Rotate{Enter}
-F23 & \:: send Mirror{Enter}
-F23 & v:: send Value{Enter}
-F23 & n:: send Name{Enter}
-F23 & s:: send Smash{Enter}
-F23 & i:: send Invoke{Enter}
-F23 & l:: send Label{Enter}
-F23 & w:: send Net{Enter}
-F23 & c:: send Arc{Enter}
-F23 & d:: send Delete{Enter}
-F23 & g:: send Group{Enter}
+Tab & a:: send Add{Enter}
+Tab & m:: send Move{Enter}
+Tab & r:: send Rotate{Enter}
+Tab & \:: send Mirror{Enter}
+Tab & v:: send Value{Enter}
+Tab & n:: send Name{Enter}
+Tab & s:: send Smash{Enter}
+Tab & i:: send Invoke{Enter}
+Tab & l:: send Label{Enter}
+Tab & w:: send Net{Enter}
+Tab & c:: send Arc{Enter}
+Tab & d:: send Delete{Enter}
+Tab & g:: send Group{Enter}
 #IfWinActive

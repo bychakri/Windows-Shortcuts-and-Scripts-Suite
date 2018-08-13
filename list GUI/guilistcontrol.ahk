@@ -2,9 +2,15 @@ GProject:
 If (A_GuiEvent = "Normal"){
  goto ButtonOK
 }
-Else If (A_GuiEvent = "K"){
+Else If (A_GuiEvent = "K") {
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- if (key = "NumpadDel") {
+ if (key = "NumpadRight")
+  goto ButtonOK
+ else if (key = "NumpadLeft"){
+ clipboard := %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+ CloseGui()
+ }
+ else if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%RelList
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
   UpdateProjectIni(tmpList)
@@ -38,7 +44,13 @@ If (A_GuiEvent = "Normal"){
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- if (key = "NumpadDel") {
+ if (key = "NumpadRight")
+  goto ButtonOK
+ else if (key = "NumpadLeft"){
+ clipboard := %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+ CloseGui()
+ }
+ else if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
   UpdateIni(tmpList)
@@ -60,7 +72,13 @@ If (A_GuiEvent = "Normal"){
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- if (key = "NumpadDel") {
+ if (key = "NumpadRight")
+  goto ButtonOK
+ else if (key = "NumpadLeft"){
+ clipboard := %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+ CloseGui()
+ }
+ else if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
   UpdateIni(tmpList)
@@ -78,21 +96,37 @@ Return
 
 GScripts:
 If (A_GuiEvent = "Normal"){
- goto ButtonOK
+MsgBox Hi
+ goto ButtonScripts
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- if (key = "NumpadDel") {
+ if (key = "NumpadRight")
+  goto ButtonScripts
+ else if (key = "NumpadLeft"){
+ if LV_GetNext(0, "Focused") = 0
+  return
+ scriptAbsPath := getScriptAbsolutePath()
+ SplitPath, scriptAbsPath, scriptName
+ if winExist(scriptName . " - Notepad"){
+  winActivate, % scriptName . " - Notepad"
+  CloseGui()
+  return
+ }
+ run % "notepad.exe """ . scriptAbsPath . """"
+ CloseGui()
+ }
+ else if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
-  UpdateIni(tmpList)
+  UpdateScriptIni(tmpList)
   }
  else if (key = "NumpadAdd") {
-  FileSelectFile, File, 32 , % A_ScriptDir + "\scripts"
+  FileSelectFile, File, 32 , % A_ScriptDir
   if (File <> "") {
    tmpList := %actGUISection%%actGUILabel%List
    tmpList.Insert(File)
-   UpdateIni(tmpList)
+   UpdateScriptIni(tmpList)
    }
  }
 }
@@ -104,7 +138,17 @@ If (A_GuiEvent = "Normal"){
 }
 Else If (A_GuiEvent = "K"){
  key := GetKeyName(Format("vk{:x}", A_EventInfo))
- if (key = "NumpadDel") {
+ if (key = "NumpadRight")
+  goto ButtonOK
+ else if (key = "NumpadLeft"){
+ clipboard := %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+ CloseGui()
+ }
+ else if (key = "Control") {
+  run % "C:\Users\koyal\AppData\Local\atom\atom.exe """ . %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1] . """"
+  CloseGui()
+ }
+ else if (key = "NumpadDel") {
   tmpList := %actGUISection%%actGUILabel%List
   tmpList.Delete(LV_GetNext(0, "Focused")+1)
   UpdateIni(tmpList)
@@ -120,6 +164,10 @@ Else If (A_GuiEvent = "K"){
 }
 Return
 
+ButtonFiles:
+ButtonApps:
+ButtonProject:
+ButtonFolders:
 ButtonOK:
 GuiControlGet, FocusedControl, FocusV
 if LV_GetNext(0, "Focused") = 0
@@ -127,3 +175,20 @@ if LV_GetNext(0, "Focused") = 0
 run, % """" . %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1] . """"
 CloseGui()
 return
+
+ButtonScripts:
+GuiControlGet, FocusedControl, FocusV
+if LV_GetNext(0, "Focused") = 0
+    return
+run, % """" . getScriptAbsolutePath() . """"
+CloseGui()
+return
+
+getScriptAbsolutePath() {
+  global
+  scriptPath := %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+  scriptbasePath := ""
+  if subStr(scriptPath,1,1) = "\"
+   scriptbasePath := A_ScriptDir
+  return scriptbasePath . %actGUISection%%actGUILabel%List[LV_GetNext(0, "Focused")+1]
+}

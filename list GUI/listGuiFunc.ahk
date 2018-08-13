@@ -5,14 +5,14 @@
 ; Show a Project Dialog
 showProjectGui(ind) {
   global
-  if (actGUIInd = ind) {
-   CloseGui()
+  if (actProjGUIInd = ind) {
+   CloseProjGui()
    return
    }
-  CloseGui()
+  CloseProjGui()
   actGUISection := projectModals[ind][1]
   actGUILabel := projectModals[ind][2]
-  actGUIInd := ind
+  actProjGUIInd := ind
   actGUIFolder := %actGUISection%%actGUILabel%ParFol
   GuiCreateList()
 }
@@ -47,9 +47,11 @@ for index, element in tmpList {
  folName := ParentDir[maxInd]
  if (folName = "")
   folName := element
+ if (actGUISection = "Apps") or (actGUISection = "Scripts")
+  folName := StrSplit(folName,".")[1]
  LV_Add("",folName)
  }
-Gui, Add, Button, Hidden Default, OK
+Gui, Add, Button, Hidden Default, %actGUISection%
 dmy := lviW
 wh := lvbh + 12
 Gui Show, AutoSize ,  %actGUISection% - %actGUILabel%
@@ -64,9 +66,18 @@ CloseGui() {
 global
 Gui, Destroy
 actGUIInd := 0
+actProjGUIInd := 0
+}
+
+CloseProjGui() {
+global
+Gui, Destroy
+actGUIInd := 0
+actProjGUIInd := 0
 }
 
 GuiClose:
 GuiEscape:
 Gui, Destroy
 actGUIInd := 0
+actProjGUIInd := 0
