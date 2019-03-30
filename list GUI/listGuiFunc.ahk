@@ -38,9 +38,9 @@ tmpList := %actGUISection%%actGUILabel%List
 ;msgbox % tmpList.MaxIndex() . actGUISection . actGUILabel
 lvbh := tmpList.MaxIndex()-1
 Gui -MinimizeBox -MaximizeBox -SysMenu -Caption
-Gui Font, s16 q5 cNavy, Verdana
+Gui Font, s24 q5 cNavy, Verdana
 Gui Color, Black
-Gui, Add, ListView, +BackgroundBlack cWhite -Multi R%lvbh% w%lviW%  +AltSubmit NoSortHdr gG%actGUISection% vGuiN%actGUIInd%, %actGUISection% - %actGUILabel%
+Gui, Add, ListView, +BackgroundBlack cWhite BackgroundTrans -Multi R%lvbh% w%lviW%  +AltSubmit NoSortHdr gG%actGUISection% vGuiN%actGUIInd%, %actGUISection% - %actGUILabel%
 for index, element in tmpList {
  ParentDir := StrSplit(element,"\")
  maxInd := StrSplit(element,"\").MaxIndex()
@@ -54,6 +54,8 @@ for index, element in tmpList {
 Gui, Add, Button, Hidden Default, %actGUISection%
 dmy := lviW
 wh := lvbh + 12
+Gui +LastFound +AlwaysOnTop +ToolWindow
+WinSet, Transparent, 190
 Gui Show, AutoSize ,  %actGUISection% - %actGUILabel%
 return
 }

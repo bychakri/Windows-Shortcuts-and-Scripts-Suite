@@ -23,7 +23,7 @@ send !d
 send ^v{Enter}{Tab 4}
 send ^a
 send {Enter}
-sleep, 5000
+sleep, 500
 ; Select Slide type dropdowm
 ControlClick, X366 Y298, Photo Album
 sleep, 500

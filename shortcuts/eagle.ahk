@@ -18,4 +18,6 @@ Tab & w:: send Net{Enter}
 Tab & c:: send Arc{Enter}
 Tab & d:: send Delete{Enter}
 Tab & g:: send Group{Enter}
+!Tab::send !{Tab}
+Tab::send {Tab}
 #IfWinActive
